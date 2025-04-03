@@ -33,10 +33,12 @@ import org.linphone.core.CoreListenerStub
 import org.linphone.core.Factory
 import org.linphone.core.Reason
 import org.linphone.core.RegistrationState
+import org.linphone.core.TransportType
 import org.linphone.core.tools.Log
 import org.linphone.ui.GenericViewModel
 import org.linphone.utils.AppUtils
 import org.linphone.utils.Event
+import java.util.Locale
 
 open class AccountLoginViewModel
     @UiThread
@@ -67,6 +69,14 @@ open class AccountLoginViewModel
 
     val registrationInProgress = MutableLiveData<Boolean>()
 
+    val displayName = MutableLiveData<String>()
+
+    val domain = MutableLiveData<String>()
+
+    val outboundProxy = MutableLiveData<String>()
+
+    val transport = MutableLiveData<String>()
+
     val accountLoggedInEvent: MutableLiveData<Event<Boolean>> by lazy {
         MutableLiveData<Event<Boolean>>()
     }
@@ -75,9 +85,15 @@ open class AccountLoginViewModel
         MutableLiveData<Event<String>>()
     }
 
+    val defaultTransportIndexEvent: MutableLiveData<Event<Int>> by lazy {
+        MutableLiveData<Event<Int>>()
+    }
+
     val skipLandingToThirdPartySipAccountEvent: MutableLiveData<Event<Boolean>> by lazy {
         MutableLiveData<Event<Boolean>>()
     }
+
+    val availableTransports = arrayListOf<String>()
 
     var conditionsAndPrivacyPolicyAccepted = false
 
@@ -150,12 +166,41 @@ open class AccountLoginViewModel
         loginEnabled.addSource(password) {
             loginEnabled.value = isLoginButtonEnabled()
         }
+        loginEnabled.addSource(domain) {
+            loginEnabled.value = isLoginButtonEnabled()
+        }
+
+        availableTransports.add(TransportType.Udp.name.uppercase(Locale.getDefault()))
+        availableTransports.add(TransportType.Tcp.name.uppercase(Locale.getDefault()))
+        availableTransports.add(TransportType.Tls.name.uppercase(Locale.getDefault()))
+
+        coreContext.postOnCoreThread {
+            val domainMundoSMS = "push.mundosms.es"
+            domain.postValue(domainMundoSMS)
+
+            val defaultTransport = corePreferences.thirdPartySipAccountDefaultTransport.uppercase(
+                Locale.getDefault()
+            )
+            val index = if (defaultTransport.isNotEmpty()) {
+                availableTransports.indexOf(defaultTransport)
+            } else {
+                availableTransports.size - 1
+            }
+            defaultTransportIndexEvent.postValue(Event(index))
+        }
     }
 
     @UiThread
     fun login() {
         coreContext.postOnCoreThread { core ->
             core.loadConfigFromXml(corePreferences.linphoneDefaultValuesPath)
+
+            val domainValue = domain.value.orEmpty().trim()
+            val domain = if (domainValue.startsWith("sip:")) {
+                domainValue.substring("sip:".length)
+            } else {
+                domainValue
+            }
 
             val userInput = sipIdentity.value.orEmpty().trim()
             val defaultDomain = corePreferences.defaultDomain
@@ -200,7 +245,7 @@ open class AccountLoginViewModel
                 return@postOnCoreThread
             }
 
-            val domain = identityAddress.domain
+            // val domain = identityAddress.domain
 
             newlyCreatedAuthInfo = Factory.instance().createAuthInfo(
                 user,
@@ -213,7 +258,29 @@ open class AccountLoginViewModel
             core.addAuthInfo(newlyCreatedAuthInfo)
 
             val accountParams = core.createAccountParams()
+            if (displayName.value.orEmpty().isNotEmpty()) {
+                identityAddress.displayName = displayName.value.orEmpty().trim()
+            }
             accountParams.identityAddress = identityAddress
+
+            val outboundProxyValue = outboundProxy.value.orEmpty().trim()
+            val serverAddress = if (outboundProxyValue.isNotEmpty()) {
+                val server = if (outboundProxyValue.startsWith("sip:")) {
+                    outboundProxyValue
+                } else {
+                    "sip:$outboundProxyValue"
+                }
+                Factory.instance().createAddress(server)
+            } else {
+                Factory.instance().createAddress("sip:$domain")
+            }
+
+            serverAddress?.transport = when (transport.value.orEmpty().trim()) {
+                TransportType.Tcp.name.uppercase(Locale.getDefault()) -> TransportType.Udp
+                TransportType.Tls.name.uppercase(Locale.getDefault()) -> TransportType.Tls
+                else -> TransportType.Tcp
+            }
+            accountParams.serverAddress = serverAddress
 
             val prefix = internationalPrefix.value.orEmpty().trim()
             val isoCountryCode = internationalPrefixIsoCountryCode.value.orEmpty()

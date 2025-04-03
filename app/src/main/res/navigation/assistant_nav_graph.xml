@@ -119,12 +119,12 @@
 
         <action
             android:id="@+id/action_landingFragment_to_thirdPartySipAccountWarningFragment"
-            app:destination="@id/thirdPartySipAccountWarningFragment"
+            app:destination="@id/thirdPartySipAccountLoginFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
+            app:launchSingleTop="true"
             app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"
-            app:launchSingleTop="true" />
+            app:popExitAnim="@anim/slide_out_right" />
 
         <action
             android:id="@+id/action_landingFragment_to_registerFragment"
