@@ -30,6 +30,7 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import androidx.annotation.UiThread
+import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.navGraphViewModels
@@ -105,7 +106,10 @@ class LandingFragment : GenericFragment() {
 
         binding.setRegisterClickListener {
             if (viewModel.conditionsAndPrivacyPolicyAccepted) {
-                goToRegisterFragment()
+                val url = "https://www.mundosms.es/registro"
+                val intent = Intent(Intent.ACTION_VIEW, url.toUri())
+                startActivity(intent)
+                // goToRegisterFragment()
             } else {
                 showAcceptConditionsAndPrivacyDialog(goToAccountCreate = true)
             }
@@ -128,23 +132,13 @@ class LandingFragment : GenericFragment() {
         }
 
         binding.setForgottenPasswordClickListener {
-            val url = getString(R.string.web_platform_forgotten_password_url)
-            try {
-                val browserIntent = Intent(Intent.ACTION_VIEW, url.toUri())
-                startActivity(browserIntent)
-            } catch (ise: IllegalStateException) {
-                Log.e(
-                    "$TAG Can't start ACTION_VIEW intent for URL [$url], IllegalStateException: $ise"
-                )
-            } catch (anfe: ActivityNotFoundException) {
-                Log.e(
-                    "$TAG Can't start ACTION_VIEW intent for URL [$url], ActivityNotFoundException: $anfe"
-                )
-            } catch (e: Exception) {
-                Log.e(
-                    "$TAG Can't start ACTION_VIEW intent for URL [$url]: $e"
-                )
-            }
+            val builder = AlertDialog.Builder(requireContext())
+
+            val view = layoutInflater.inflate(R.layout.dialog_custom_popup, null)
+            builder.setView(view)
+
+            val dialog = builder.create()
+            dialog.show()
         }
 
         viewModel.showPassword.observe(viewLifecycleOwner) {

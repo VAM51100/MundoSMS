@@ -939,6 +939,9 @@
     <string name="content_description_copy_text_to_clipboard">Copy text to clipboard</string>
     <string name="content_description_voicemail_available">Voice message are available</string>
     <string name="content_description_call_voicemail">Long press to dial voicemail</string>
+    <string name="popup_pasos_a_seguir">To recover your password, follow the instructions below:</string>
+    <string name="popup_paso1">Log in to our website (https://mundosms.es) and in the side menu go to the calls section and \'Extensions or SIP Lines\' and click on this section:</string>
+    <string name="popup_paso2">Then copy the password that should be located in this area. But BE CAREFUL, if you paste the password directly some space may be stuck, make sure there is none.</string>
 
     <!-- Copy of private hosts_allowlist_sample in androidx.car.app:app:1.7.0-beta01, as they recommend it -->
     <string-array name="hosts_allowlist_sample_copy" translatable="false">
