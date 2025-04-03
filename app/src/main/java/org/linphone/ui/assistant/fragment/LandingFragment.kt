@@ -27,6 +27,8 @@ import android.telephony.TelephonyManager
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import androidx.annotation.UiThread
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -58,6 +60,19 @@ class LandingFragment : GenericFragment() {
         R.id.assistant_nav_graph
     )
 
+    private val dropdownListener = object : AdapterView.OnItemSelectedListener {
+        override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+            val transport = viewModel.availableTransports[position]
+            Log.i("$TAG Selected transport updated [$transport]")
+            viewModel.transport.value = transport
+        }
+
+        override fun onNothingSelected(parent: AdapterView<*>?) {
+        }
+    }
+
+    private lateinit var adapter: ArrayAdapter<String>
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -71,6 +86,16 @@ class LandingFragment : GenericFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.lifecycleOwner = viewLifecycleOwner
+
+        adapter = ArrayAdapter(
+            requireContext(),
+            R.layout.drop_down_item,
+            viewModel.availableTransports
+        )
+        adapter.setDropDownViewResource(R.layout.generic_dropdown_cell)
+        binding.transport!!.adapter = adapter
+        binding.transport!!.onItemSelectedListener = dropdownListener
+
         binding.viewModel = viewModel
         observeToastEvents(viewModel)
 

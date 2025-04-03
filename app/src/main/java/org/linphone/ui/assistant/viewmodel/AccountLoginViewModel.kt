@@ -276,9 +276,9 @@ open class AccountLoginViewModel
             }
 
             serverAddress?.transport = when (transport.value.orEmpty().trim()) {
-                TransportType.Tcp.name.uppercase(Locale.getDefault()) -> TransportType.Udp
+                TransportType.Tcp.name.uppercase(Locale.getDefault()) -> TransportType.Tcp
                 TransportType.Tls.name.uppercase(Locale.getDefault()) -> TransportType.Tls
-                else -> TransportType.Tcp
+                else -> TransportType.Udp
             }
             accountParams.serverAddress = serverAddress
 
