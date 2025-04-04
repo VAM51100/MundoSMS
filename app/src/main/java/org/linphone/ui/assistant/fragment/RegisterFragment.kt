@@ -163,7 +163,7 @@ class RegisterFragment : GenericFragment() {
             }
         }
 
-        viewModel.goToSmsCodeConfirmationViewEvent.observe(viewLifecycleOwner) {
+        /*viewModel.goToSmsCodeConfirmationViewEvent.observe(viewLifecycleOwner) {
             it.consume {
                 Log.i("$TAG Going to SMS code confirmation fragment")
                 if (findNavController().currentDestination?.id == R.id.registerFragment) {
@@ -172,7 +172,7 @@ class RegisterFragment : GenericFragment() {
                     findNavController().navigate(action)
                 }
             }
-        }
+        }*/
 
         viewModel.errorHappenedEvent.observe(viewLifecycleOwner) {
             it.consume { error ->

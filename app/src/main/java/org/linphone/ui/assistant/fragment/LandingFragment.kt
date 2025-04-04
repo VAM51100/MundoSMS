@@ -125,7 +125,7 @@ class LandingFragment : GenericFragment() {
 
         binding.setThirdPartySipAccountLoginClickListener {
             if (viewModel.conditionsAndPrivacyPolicyAccepted) {
-                goToLoginThirdPartySipAccountFragment(false)
+                // goToLoginThirdPartySipAccountFragment(false)
             } else {
                 showAcceptConditionsAndPrivacyDialog(goToThirdPartySipAccountLogin = true)
             }
@@ -166,7 +166,7 @@ class LandingFragment : GenericFragment() {
 
         viewModel.skipLandingToThirdPartySipAccountEvent.observe(viewLifecycleOwner) {
             it.consume {
-                goToLoginThirdPartySipAccountFragment(true)
+                // goToLoginThirdPartySipAccountFragment(true)
             }
         }
 
@@ -181,7 +181,7 @@ class LandingFragment : GenericFragment() {
         }
     }
 
-    private fun goToRegisterFragment() {
+    /*private fun goToRegisterFragment() {
         if (findNavController().currentDestination?.id == R.id.landingFragment) {
             val action = LandingFragmentDirections.actionLandingFragmentToRegisterFragment()
             findNavController().navigate(action)
@@ -197,7 +197,7 @@ class LandingFragment : GenericFragment() {
             }
             findNavController().navigate(action)
         }
-    }
+    }*/
 
     private fun showAcceptConditionsAndPrivacyDialog(
         goToAccountCreate: Boolean = false,
@@ -222,12 +222,12 @@ class LandingFragment : GenericFragment() {
                     corePreferences.conditionsAndPrivacyPolicyAccepted = true
                 }
                 dialog.dismiss()
-
+                /*
                 if (goToAccountCreate) {
                     goToRegisterFragment()
                 } else if (goToThirdPartySipAccountLogin) {
                     goToLoginThirdPartySipAccountFragment(false)
-                }
+                }*/
             }
         }
 

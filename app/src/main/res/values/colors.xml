@@ -11,9 +11,9 @@
 
     <color name="orange_main_100">#9CC9F2</color>
     <color name="orange_main_100_alpha_50">#A0BFDE</color>
-    <color name="orange_main_300">#437ebd</color>
-    <color name="orange_main_500">#437ebd</color>
-    <color name="orange_main_700">#437ebd</color>
+    <color name="primary_color">#437ebd</color>
+    <color name="primary_color2">#437ebd</color>
+    <color name="primary_color3">#437ebd</color>
 
     <color name="gray_main2_100">#EEF6F8</color>
     <color name="gray_main2_200">#DFECF2</color>
