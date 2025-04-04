@@ -164,7 +164,7 @@ abstract class AbstractMainFragment : GenericMainFragment() {
         viewModel.navigateToMeetingsEvent.observe(viewLifecycleOwner) {
             it.consume {
                 if (currentFragmentId != R.id.meetingsListFragment) {
-                    goToMeetingsList()
+                    // goToMeetingsList()
                 }
             }
         }
@@ -320,7 +320,7 @@ abstract class AbstractMainFragment : GenericMainFragment() {
 
         sharedViewModel.navigateToMeetingsEvent.observe(viewLifecycleOwner) {
             it.consume {
-                goToMeetingsList()
+                // goToMeetingsList()
             }
         }
     }
@@ -396,7 +396,7 @@ abstract class AbstractMainFragment : GenericMainFragment() {
         }
     }
 
-    private fun goToMeetingsList() {
+    /*private fun goToMeetingsList() {
         Log.i("$TAG Navigating to meetings list")
         when (currentFragmentId) {
             R.id.conversationsListFragment -> {
@@ -415,7 +415,7 @@ abstract class AbstractMainFragment : GenericMainFragment() {
                 navigateTo(action)
             }
         }
-    }
+    }*/
 
     private fun navigateTo(action: NavDirections) {
         try {

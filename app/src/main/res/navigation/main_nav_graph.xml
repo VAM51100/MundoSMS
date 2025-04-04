@@ -23,12 +23,6 @@
             app:popUpTo="@id/contactsListFragment"
             app:popUpToInclusive="true" />
         <action
-            android:id="@+id/action_contactsListFragment_to_meetingsListFragment"
-            app:destination="@id/meetingsListFragment"
-            app:launchSingleTop="true"
-            app:popUpTo="@id/contactsListFragment"
-            app:popUpToInclusive="true" />
-        <action
             android:id="@+id/action_contactsListFragment_to_newContactFragment"
             app:destination="@id/newContactFragment"
             app:enterAnim="@anim/slide_in"
@@ -50,12 +44,6 @@
         <action
             android:id="@+id/action_historyListFragment_to_conversationsListFragment"
             app:destination="@id/conversationsListFragment"
-            app:launchSingleTop="true"
-            app:popUpTo="@id/historyListFragment"
-            app:popUpToInclusive="true" />
-        <action
-            android:id="@+id/action_historyListFragment_to_meetingsListFragment"
-            app:destination="@id/meetingsListFragment"
             app:launchSingleTop="true"
             app:popUpTo="@id/historyListFragment"
             app:popUpToInclusive="true" />
@@ -253,12 +241,6 @@
         <action
             android:id="@+id/action_conversationsListFragment_to_contactsListFragment"
             app:destination="@id/contactsListFragment"
-            app:launchSingleTop="true"
-            app:popUpTo="@id/conversationsListFragment"
-            app:popUpToInclusive="true" />
-        <action
-            android:id="@+id/action_conversationsListFragment_to_meetingsListFragment"
-            app:destination="@id/meetingsListFragment"
             app:launchSingleTop="true"
             app:popUpTo="@id/conversationsListFragment"
             app:popUpToInclusive="true" />

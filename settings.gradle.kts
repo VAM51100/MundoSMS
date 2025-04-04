@@ -46,5 +46,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "Linphone"
+rootProject.name = "MundoSMS"
 include(":app")

@@ -145,8 +145,8 @@ class MeetingsListFragment : AbstractMainFragment() {
                     Log.i("$TAG Show meeting with ID [${model.id}]")
                     if (findNavController().currentDestination?.id == R.id.meetingsListFragment) {
                         sharedViewModel.displayedMeeting = model.conferenceInfo
-                        val action = MeetingFragmentDirections.actionGlobalMeetingFragment(model.id)
-                        binding.meetingsNavContainer.findNavController().navigate(action)
+                        // val action = MeetingFragmentDirections.actionGlobalMeetingFragment(model.id)
+                        // binding.meetingsNavContainer.findNavController().navigate(action)
                     }
                 }
             }

@@ -89,7 +89,7 @@
             android:visibility="@{viewModel.hideConversations ? View.GONE : View.VISIBLE}"
             textFont="@{viewModel.conversationsSelected ? NotoSansFont.NotoSansBold : NotoSansFont.NotoSansRegular}"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/meetings"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/calls"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -111,6 +111,7 @@
             app:layout_constraintStart_toStartOf="@id/conversations"
             app:layout_constraintEnd_toEndOf="@id/conversations"/>
 
+        <!--
         <androidx.appcompat.widget.AppCompatTextView
             style="@style/bottom_nav_bar_label_style"
             android:id="@+id/meetings"
@@ -130,7 +131,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/conversations"
             app:layout_constraintTop_toTopOf="parent" />
-
+-->
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

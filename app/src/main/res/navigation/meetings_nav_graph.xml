@@ -34,11 +34,11 @@
             app:popExitAnim="@anim/slide_out_right"  />
     </fragment>
 
-    <action
+    <!--<action
         android:id="@+id/action_global_meetingFragment"
         app:destination="@id/meetingFragment"
         app:launchSingleTop="true"/>
-
+-->
     <fragment
         android:id="@+id/editMeetingFragment"
         android:name="org.linphone.ui.main.meetings.fragment.EditMeetingFragment"
