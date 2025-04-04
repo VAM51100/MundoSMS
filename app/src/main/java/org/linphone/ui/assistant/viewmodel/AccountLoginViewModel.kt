@@ -258,6 +258,7 @@ open class AccountLoginViewModel
             core.addAuthInfo(newlyCreatedAuthInfo)
 
             val accountParams = core.createAccountParams()
+            accountParams.pushNotificationAllowed = true
             if (displayName.value.orEmpty().isNotEmpty()) {
                 identityAddress.displayName = displayName.value.orEmpty().trim()
             }
