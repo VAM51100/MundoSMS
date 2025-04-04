@@ -806,6 +806,6 @@
     <string name="conversation_message_meeting_updated_label"><b>La reunión ha sido actualizada</b></string>
     <string name="conversation_message_meeting_cancelled_label"><b>La reunión ha sido cancelada</b></string>
     <string name="popup_pasos_a_seguir">Para recuperar tu contraseña, sigue las instrucciones a continuación:</string>
-    <string name="popup_paso1">Inicia sesión en nuestro sitio web (https://mundosms.es) y en el menú lateral ve a la sección de llamadas y selecciona \'Extensiones o Líneas SIP\', luego haz clic en esta sección:</string>
+    <string name="popup_paso1">Inicia sesión en nuestro sitio web (https://mundosms.es) y en el menú lateral ve a la sección de llamadas y selecciona \'Extensiones o Líneas SIP\', luego haz clic en esta extensión:</string>
     <string name="popup_paso2">Luego copia la contraseña que debería estar ubicada en esta área. Pero TEN CUIDADO, si la pegas directamente, puede que se agregue algún espacio, asegúrate de que no haya ninguno.</string>
 </resources>
