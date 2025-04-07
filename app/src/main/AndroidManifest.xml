@@ -49,7 +49,7 @@
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
         android:roundIcon="@mipmap/ic_launcher_round"
-        android:label="MundoSMS"
+        android:label="MundoPhone"
         android:enableOnBackInvokedCallback="true"
         android:localeConfig="@xml/locales_config"
         android:theme="@style/Theme.Linphone"

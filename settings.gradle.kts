@@ -46,5 +46,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "MundoSMS"
+rootProject.name = "MundoPhone"
 include(":app")

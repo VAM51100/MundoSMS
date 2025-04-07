@@ -32,7 +32,7 @@ if (firebaseCloudMessagingAvailable) {
 }
 
 var gitBranch = ByteArrayOutputStream()
-var gitVersion = "6.0.2"
+var gitVersion = "6.0.3"
 
 task("getGitVersion") {
     val gitVersionStream = ByteArrayOutputStream()
@@ -100,8 +100,8 @@ android {
         applicationId = packageName
         minSdk = 28
         targetSdk = 36
-        versionCode = 600002 // 6.00.002
-        versionName = "6.0.2"
+        versionCode = 600003 // 6.00.003
+        versionName = "2.0.0"
 
         manifestPlaceholders["appAuthRedirectScheme"] = packageName
 
@@ -253,6 +253,7 @@ dependencies {
     implementation(libs.openid.appauth)
 
     implementation(libs.linphone)
+    // implementation("org.linphone:linphone-sdk:5.4.6")
 }
 
 configure<org.jlleitschuh.gradle.ktlint.KtlintExtension> {

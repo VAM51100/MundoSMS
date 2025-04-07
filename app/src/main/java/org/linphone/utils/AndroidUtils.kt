@@ -180,6 +180,7 @@ class AppUtils {
 
             // Some VoIP providers such as voip.ms seem to not like apostrophe in user-agent
             name = name.replace("'", "")
+
             return name
         }
 
