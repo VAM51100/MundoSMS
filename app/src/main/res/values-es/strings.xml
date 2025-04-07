@@ -282,7 +282,7 @@
     <string name="settings_advanced_remote_provisioning_url">URL de aprovisionamiento remoto</string>
     <string name="settings_advanced_download_apply_remote_provisioning">Descargar y aplicar</string>
     <string name="settings_advanced_audio_devices_title">Dispositivos de audio</string>
-    <string name="settings_advanced_input_audio_device_title">Dispositivo de captura predeterminado</string>
+    <string name="settings_advanced_input_audio_device_title">Dispositivo de entrada predeterminado</string>
     <string name="settings_advanced_output_audio_device_title">Dispositivo de salida predeterminado</string>
     <string name="settings_advanced_audio_codecs_title">Códecs de audio</string>
     <string name="settings_advanced_audio_codecs_mono_subtitle">mono</string>
@@ -373,7 +373,7 @@
 
     <string name="contact_new_title">Nuevo contacto</string>
     <string name="contact_edit_title">Editar contacto</string>
-    <string name="contact_editor_first_name">Primer nombre</string>
+    <string name="contact_editor_first_name">Nombre</string>
     <string name="contact_editor_last_name">Apellido</string>
     <string name="contact_editor_company">Empresa</string>
     <string name="contact_editor_job_title">Cargo</string>

@@ -259,8 +259,13 @@ open class AccountLoginViewModel
 
             val accountParams = core.createAccountParams()
             accountParams.pushNotificationAllowed = true
-            if (displayName.value.orEmpty().isNotEmpty()) {
+            /*if (displayName.value.orEmpty().isNotEmpty()) {
                 identityAddress.displayName = displayName.value.orEmpty().trim()
+            }*/
+            if (!displayName.value.isNullOrEmpty()) {
+                identityAddress.displayName = displayName.value!!.trim()
+            } else {
+                identityAddress.displayName = sipIdentity.value!!.trim()
             }
             accountParams.identityAddress = identityAddress
 

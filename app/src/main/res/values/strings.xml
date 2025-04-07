@@ -414,7 +414,7 @@
 
     <string name="contact_new_title">New contact</string>
     <string name="contact_edit_title">Edit contact</string>
-    <string name="contact_editor_first_name">First name</string>
+    <string name="contact_editor_first_name">Name</string>
     <string name="contact_editor_last_name">Last name</string>
     <string name="contact_editor_company">Company</string>
     <string name="contact_editor_job_title">Job title</string>
