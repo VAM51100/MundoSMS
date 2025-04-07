@@ -105,14 +105,14 @@ class LandingFragment : GenericFragment() {
         }
 
         binding.setRegisterClickListener {
-            if (viewModel.conditionsAndPrivacyPolicyAccepted) {
+            // if (viewModel.conditionsAndPrivacyPolicyAccepted) {
                 val url = "https://www.mundosms.es/registro"
                 val intent = Intent(Intent.ACTION_VIEW, url.toUri())
                 startActivity(intent)
                 // goToRegisterFragment()
-            } else {
-                showAcceptConditionsAndPrivacyDialog(goToAccountCreate = true)
-            }
+            /*} else {
+                showAcceptConditionsAndPrivacyDialog(goToAccountCreate = true)*/
+            // }
         }
 
         binding.setQrCodeClickListener {
@@ -123,13 +123,13 @@ class LandingFragment : GenericFragment() {
             }
         }
 
-        binding.setThirdPartySipAccountLoginClickListener {
+        /*binding.setThirdPartySipAccountLoginClickListener {
             if (viewModel.conditionsAndPrivacyPolicyAccepted) {
                 // goToLoginThirdPartySipAccountFragment(false)
             } else {
                 showAcceptConditionsAndPrivacyDialog(goToThirdPartySipAccountLogin = true)
             }
-        }
+        }*/
 
         binding.setForgottenPasswordClickListener {
             val builder = AlertDialog.Builder(requireContext())
@@ -200,8 +200,8 @@ class LandingFragment : GenericFragment() {
     }*/
 
     private fun showAcceptConditionsAndPrivacyDialog(
-        goToAccountCreate: Boolean = false,
-        goToThirdPartySipAccountLogin: Boolean = false
+        /*goToAccountCreate: Boolean = false,
+        goToThirdPartySipAccountLogin: Boolean = false*/
     ) {
         val model = AcceptConditionsAndPolicyDialogModel()
         val dialog = DialogUtils.getAcceptConditionsAndPrivacyDialog(

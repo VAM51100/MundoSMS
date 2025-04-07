@@ -123,11 +123,11 @@
 
         </activity>
 
-        <activity
+        <!-- <activity
             android:name=".ui.welcome.WelcomeActivity"
             android:windowSoftInputMode="adjustResize"
             android:launchMode="singleTask"
-            android:resizeableActivity="true" />
+            android:resizeableActivity="true" /> -->
 
         <activity
             android:name=".ui.assistant.AssistantActivity"
