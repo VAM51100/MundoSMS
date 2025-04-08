@@ -29,7 +29,6 @@ import java.util.Locale
 import kotlinx.coroutines.launch
 import org.linphone.LinphoneApplication.Companion.coreContext
 import org.linphone.LinphoneApplication.Companion.corePreferences
-import org.linphone.R
 import org.linphone.core.Account
 import org.linphone.core.AccountDevice
 import org.linphone.core.AccountManagerServices
@@ -107,36 +106,36 @@ class AccountProfileViewModel
             accountDevices: Array<out AccountDevice>
         ) {
             Log.i("$TAG Fetched [${accountDevices.size}] devices for our account")
-            val devicesList = arrayListOf<AccountDeviceModel>()
-            for (accountDevice in accountDevices) {
-                devicesList.add(
-                    AccountDeviceModel(accountDevice) { model, device ->
-                        if (::accountManagerServices.isInitialized) {
-                            val identityAddress = account.params.identityAddress
+            // val devicesList = arrayListOf<AccountDeviceModel>()
+            /*for (accountDevice in accountDevices) {
+                // devicesList.add(
+                    /*AccountDeviceModel(accountDevice) { model, device ->
+                        /*if (::accountManagerServices.isInitialized) {
+                            /*val identityAddress = account.params.identityAddress
                             if (identityAddress != null) {
                                 Log.i(
                                     "$TAG Removing device with name [${device.name}] and uuid [${device.uuid}]"
                                 )
-                                val deleteRequest = accountManagerServices.createDeleteDeviceRequest(
+                                /*val deleteRequest = accountManagerServices.createDeleteDeviceRequest(
                                     identityAddress,
                                     device
                                 )
                                 deleteRequest.addListener(this)
-                                deleteRequest.submit()
+                                deleteRequest.submit()*/
 
-                                val newList = arrayListOf<AccountDeviceModel>()
-                                newList.addAll(devices.value.orEmpty())
-                                newList.remove(model)
-                                devices.postValue(newList)
+                                //val newList = arrayListOf<AccountDeviceModel>()
+                                //newList.addAll(devices.value.orEmpty())
+                                //newList.remove(model)
+                                //devices.postValue(newList)
                             } else {
                                 Log.e("$TAG Account identity address is null, can't delete device!")
-                            }
-                        }
-                    }
-                )
-            }
-            devices.postValue(devicesList)
-            devicesFetchInProgress.postValue(false)
+                            }*/
+                        }*/
+                    }*/
+                // )
+            }*/
+            // devices.postValue(devicesList)
+            // devicesFetchInProgress.postValue(false)
         }
 
         override fun onRequestSuccessful(request: AccountManagerServicesRequest, data: String?) {
@@ -157,10 +156,10 @@ class AccountProfileViewModel
             )
             if (!errorMessage.isNullOrEmpty()) {
                 when (request.type) {
-                    AccountManagerServicesRequest.Type.GetDevicesList, AccountManagerServicesRequest.Type.DeleteDevice -> {
+                    /*AccountManagerServicesRequest.Type.GetDevicesList, AccountManagerServicesRequest.Type.DeleteDevice -> {
                         showFormattedRedToast(errorMessage, R.drawable.warning_circle)
                         devicesFetchInProgress.postValue(false)
-                    }
+                    }*/
                     else -> {}
                 }
             }
@@ -169,15 +168,15 @@ class AccountProfileViewModel
 
     init {
         expandDetails.value = true
-        expandDevices.value = false
+        /*expandDevices.value = false
         showDeviceId.value = false
-        devicesFetchInProgress.value = true
+        devicesFetchInProgress.value = true*/
         isOnDefaultDomain.value = false
 
-        emptyDevices.value = true
+        /*emptyDevices.value = true
         emptyDevices.addSource(devices) { list ->
             emptyDevices.value = list.orEmpty().isEmpty()
-        }
+        }*/
 
         coreContext.postOnCoreThread {
             hideAccountSettings.postValue(corePreferences.hideAccountSettings)
