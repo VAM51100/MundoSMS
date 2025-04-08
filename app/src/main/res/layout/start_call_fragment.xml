@@ -32,8 +32,8 @@
                 android:id="@+id/multiple_selection_group"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:constraint_referenced_ids="multiple_selection, multiple_selection_count"
-                android:visibility="@{viewModel.multipleSelectionMode ? View.VISIBLE : View.GONE, default=gone}" />
+                android:visibility="@{viewModel.multipleSelectionMode ? View.VISIBLE : View.GONE, default=gone}"
+                app:constraint_referenced_ids="multiple_selection, multiple_selection_count" />
 
             <ImageView
                 android:id="@+id/back"
@@ -162,8 +162,8 @@
                 android:id="@+id/group_call"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:constraint_referenced_ids="group_call_icon, gradient_background, group_call_label"
-                android:visibility="@{viewModel.hideGroupCallButton || viewModel.multipleSelectionMode || viewModel.searchFilter.length() > 0 ? View.GONE : View.VISIBLE}" />
+                android:visibility="@{viewModel.hideGroupCallButton || viewModel.multipleSelectionMode || viewModel.searchFilter.length() > 0 ? View.GONE : View.VISIBLE}"
+                app:constraint_referenced_ids="group_call_icon, gradient_background, group_call_label" />
 
             <!-- margin start must be half the size of the group_call_icon below -->
             <View
@@ -261,22 +261,6 @@
                 android:visibility="@{viewModel.multipleSelectionMode &amp;&amp; viewModel.startGroupCallButtonEnabled ? View.VISIBLE : View.GONE, default=gone}"
                 android:src="@drawable/check"
                 android:contentDescription="@string/content_description_create_group_call"
-                app:tint="?attr/color_on_main"
-                app:backgroundTint="?attr/color_main1_500"
-                app:shapeAppearanceOverlay="@style/rounded"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent" />
-
-            <com.google.android.material.floatingactionbutton.FloatingActionButton
-                android:id="@+id/show_numpad"
-                android:onClick="@{() -> viewModel.switchBetweenKeyboardAndNumpad()}"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end|bottom"
-                android:layout_margin="16dp"
-                android:src="@drawable/numpad"
-                android:contentDescription="@string/content_description_show_numpad"
-                android:visibility="@{viewModel.isNumpadVisible || viewModel.multipleSelectionMode ? View.GONE : View.VISIBLE}"
                 app:tint="?attr/color_on_main"
                 app:backgroundTint="?attr/color_main1_500"
                 app:shapeAppearanceOverlay="@style/rounded"
