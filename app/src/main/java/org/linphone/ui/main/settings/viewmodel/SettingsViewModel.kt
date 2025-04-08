@@ -753,7 +753,7 @@ class SettingsViewModel
         mediaEncryptionValues.clear()
 
         var index = 0
-        val defaultMediaEncryption = core.mediaEncryption
+        val defaultMediaEncryption = MediaEncryption.None
         Log.i("$TAG Current media encryption is [$defaultMediaEncryption]")
         for (encryption in MediaEncryption.entries) {
             if (core.isMediaEncryptionSupported(encryption)) {
