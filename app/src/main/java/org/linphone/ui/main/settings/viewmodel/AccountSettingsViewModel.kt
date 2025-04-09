@@ -73,7 +73,7 @@ class AccountSettingsViewModel
 
     val showTurnPassword = MutableLiveData<Boolean>()
 
-    val avpfEnabled = MutableLiveData<Boolean>()
+    val avpfEnabled = MutableLiveData<Boolean>(false)
 
     val expire = MutableLiveData<String>()
 

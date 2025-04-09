@@ -210,7 +210,7 @@ class SettingsViewModel
     private val mediaEncryptionValues = arrayListOf<MediaEncryption>()
     val mediaEncryptionMandatory = MutableLiveData<Boolean>()
     val createEndToEndEncryptedConferences = MutableLiveData<Boolean>()
-    val acceptEarlyMedia = MutableLiveData<Boolean>()
+    val acceptEarlyMedia = MutableLiveData<Boolean>(true)
     val ringDuringEarlyMedia = MutableLiveData<Boolean>()
     val allowOutgoingEarlyMedia = MutableLiveData<Boolean>()
     val autoAnswerIncomingCalls = MutableLiveData<Boolean>()
@@ -787,6 +787,7 @@ class SettingsViewModel
 
     @UiThread
     fun setMediaEncryption(index: Int) {
+        Log.i("$TAG Media Encryption aquí")
         coreContext.postOnCoreThread { core ->
             val mediaEncryption = mediaEncryptionValues[index]
             core.mediaEncryption = mediaEncryption
@@ -794,7 +795,10 @@ class SettingsViewModel
             if (mediaEncryption == MediaEncryption.None) {
                 core.isMediaEncryptionMandatory = false
                 mediaEncryptionMandatory.postValue(false)
+
+                Log.i("$TAG Media Encryption aquí $mediaEncryption es none")
             }
+            Log.i("$TAG Media Encryption aquí $mediaEncryption")
         }
     }
 

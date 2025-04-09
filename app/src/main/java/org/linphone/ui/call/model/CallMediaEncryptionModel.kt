@@ -32,7 +32,7 @@ class CallMediaEncryptionModel
     constructor(
     private val showZrtpSasValidationDialog: () -> Unit
 ) {
-    val mediaEncryption = MutableLiveData<String>()
+    val mediaEncryption = MutableLiveData<String>("None")
 
     val isMediaEncryptionZrtp = MutableLiveData<Boolean>()
     val zrtpCipher = MutableLiveData<String>()
