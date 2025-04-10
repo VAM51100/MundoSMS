@@ -24,12 +24,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.UiThread
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import org.linphone.core.tools.Log
 import org.linphone.databinding.ChatEphemeralLifetimeFragmentBinding
 import org.linphone.ui.main.chat.viewmodel.ConversationEphemeralLifetimeViewModel
 import org.linphone.ui.main.fragment.SlidingPaneChildFragment
+import org.linphone.utils.Event
 
 @UiThread
 class ConversationEphemeralLifetimeFragment : SlidingPaneChildFragment() {
@@ -65,7 +67,7 @@ class ConversationEphemeralLifetimeFragment : SlidingPaneChildFragment() {
         super.onViewCreated(view, savedInstanceState)
 
         binding.lifecycleOwner = viewLifecycleOwner
-/*
+
         viewModel = ViewModelProvider(this)[ConversationEphemeralLifetimeViewModel::class.java]
         binding.viewModel = viewModel
         observeToastEvents(viewModel)
@@ -76,14 +78,13 @@ class ConversationEphemeralLifetimeFragment : SlidingPaneChildFragment() {
 
         binding.setBackClickListener {
             goBack()
-        }*/
+        }
     }
 
     override fun onPause() {
-        /*
         sharedViewModel.newChatMessageEphemeralLifetimeToSet.value = Event(
             viewModel.currentlySelectedValue.value ?: 0L
-        )*/
+        )
         super.onPause()
     }
 }
