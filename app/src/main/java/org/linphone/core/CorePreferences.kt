@@ -369,7 +369,7 @@ class CorePreferences
 
     @get:WorkerThread
     val defaultDomain: String
-        get() = config.getString("app", "default_domain", "sip.linphone.org")!!
+        get() = config.getString("app", "default_domain", "voip.mundosms.es")!!
 
     @get:AnyThread
     val configPath: String

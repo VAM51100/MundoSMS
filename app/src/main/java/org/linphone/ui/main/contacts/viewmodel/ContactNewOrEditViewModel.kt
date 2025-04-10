@@ -375,7 +375,8 @@ class ContactNewOrEditViewModel
             if (data.isNotEmpty()) {
                 val parsedAddress = core.interpretUrl(data, false)
                 if (parsedAddress != null) {
-                    toKeep.add(parsedAddress)
+                    val correctedUri = changeDomainIfNecessary(parsedAddress)
+                    toKeep.add(correctedUri)
                 }
             }
         }
@@ -418,6 +419,21 @@ class ContactNewOrEditViewModel
         for (address in toAdd) {
             friend.addAddress(address)
         }
+    }
+
+    private fun changeDomainIfNecessary(address: Address): Address {
+        val localPart = address.asStringUriOnly().substringBefore("@")
+        var domain = address.asStringUriOnly().substringAfter("@")
+
+        if (domain == "sip.linphone.org") {
+            domain = "voip.mundosms.es"
+        }
+
+        val correctedUri = "$localPart@$domain"
+        val core = coreContext.core
+        val correctedAddress = core.interpretUrl(correctedUri, false) ?: address
+        Log.i("$TAG Changed address domain to: $correctedUri")
+        return correctedAddress
     }
 
     @WorkerThread
